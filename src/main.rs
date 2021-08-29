@@ -17,7 +17,7 @@ pub enum AstNode {
 
 pub fn string_parser(string_node: Pair<Rule>) -> AstNode {
     let mut string = String::new();
-
+    println!("{:?}",&string_node);
     for node in string_node.clone().into_inner() {
         match node.as_rule() {
             Rule::Str => string = String::from(node.to_string()),
@@ -51,5 +51,5 @@ pub fn parse(source: &str) -> Result<Vec<AstNode>, Error<Rule>> {
 
 fn main() {
     let astnode = parse("'Hello world'\n").expect("unsuccessful parse");
-    println!("{:?}", &astnode);
+    //println!("{:?}", &astnode);
 }
